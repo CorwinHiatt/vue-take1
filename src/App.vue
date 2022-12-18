@@ -1,5 +1,5 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import MyForm from './components/MyForm.vue'
 </script>
 
 <template>
@@ -11,19 +11,19 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <MyForm msg="Vite + Vue" />
 </template>
 
 <style scoped>
 .logo {
-  height: 7em;
+  height: 6em;
   padding: 1.5em;
   will-change: filter;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #e905b8f5);
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883f4);
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>

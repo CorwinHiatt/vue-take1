@@ -1,19 +1,30 @@
 
-<script setup>  
 import { ref } from 'vue'
-
-<h1>I don't even know whats happening yet! 🤣</h1>
+<script>  
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String,
+  },
+  setup(props) {
+    const count = ref(0)
+    return {
+      count,
+    }
+  },
+}
 
 
 defineProps({
   msg: String,
 })
-
-const count = ref(0)
 </script>
-
 <template>
-  <h1>{{ msg }}</h1>
+
+<button type="button" @click="count++">
+  count is: {{ count }} <br></button>
+
+
   
 </template>
 
@@ -22,4 +33,3 @@ const count = ref(0)
   color: #888;
 }
 </style>
-</script>
