@@ -1,13 +1,13 @@
 <template>
   <div>
-    <input type="text" placeholder="name" v-model="name"/> 
+    <input type="text" placeholder="River" v-mod/> 
 
   </div>
   <div>
     <input type="text" placeholder="email"/>
   </div>
   <div>
-    <button type="submit">Submit</button>
+    <button @:click="submitForm">Submit</button>
   </div>
   <router-view>
 
@@ -22,13 +22,13 @@ export default {
   setup() {
     const name = ref('')
     const email = ref('')
-    const submit = () => {
-      console.log(name.value, email.value)
+    const submitForm = () => {
+      console.log(`Form submitted!!! Name = ${name.value, email.value}`)
     }
     return {
       name,
-      email,
-      submit
+      
+      submitForm,
     }
   }
 }
@@ -43,7 +43,7 @@ input[ type="text"]{
 button[type="submit"]{
   padding: 20px;
   margin-top: 0.4ch;
-  background-color: #000;
-  color: #fff;
+  background-color: rgb(242, 15, 15);
+  color: rgb(244, 16, 206);
 }
 </style>

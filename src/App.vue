@@ -15,15 +15,20 @@ import MyForm from './components/MyForm.vue'
 </template>
 
 <style scoped>
+.app{
+  text-align: center;
+  color: #e90acf;
+  margin-top: 60px;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #e40facaa);
 }
 .logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+  filter: drop-shadow(0 0 2em #f9054aaa);
 }
 </style>
