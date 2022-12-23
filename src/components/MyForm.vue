@@ -1,37 +1,57 @@
 <template>
-  <div>
-    <input type="text" placeholder="River" v-mod/> 
-
-  </div>
-  <div>
-    <input type="text" placeholder="email"/>
-  </div>
-  <div>
-    <button @:click="submitForm">Submit</button>
-  </div>
-  <router-view>
-
-  </router-view>
-    
+  <form @submit.prevent="submitForm">
+    <label for="name">Name:</label>
+    <input v-model="form.name" type="text" id="name" required />
+    <br />
+    <label for="email">Email:</label>
+    <input v-model="form.email" type="email" id="email" required />
+    <br />
+    <label for="message">Message:</label>
+    <textarea v-model="form.message" id="message" required></textarea>
+    <br />
+    <button type="submit">Send</button>
+  </form>
 </template>
 
 <script>
-import { ref } from 'vue'
 export default {
-  name: 'MyForm',
-  setup() {
-    const name = ref('')
-    const email = ref('')
-    const submitForm = () => {
-      console.log(`Form submitted!!! Name = ${name.value, email.value}`)
-    }
+  data() {
     return {
-      name,
-      
-      submitForm,
+      form: {
+        name: "",
+        email: "",
+        message: ""
+      },
+      errors: []
+    };
+  },
+  methods: {
+    async submitForm() {
+      // validate form
+      this.errors = [];
+      if (!this.form.name) {
+        this.errors.push("Name is required.");
+      }
+      if (!this.form.email) {
+        this.errors.push("Email is required.");
+      }
+      if (!this.form.message) {
+        this.errors.push("Message is required.");
+      }
+      if (this.errors.length) {
+        return;
+      }
+
+      // submit form
+      try {
+        const response = await axios.post("/api/submit-form", this.form);
+        console.log("Form submitted successfully:", response);
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
     }
   }
-}
+};
 </script>
 
 <style>
