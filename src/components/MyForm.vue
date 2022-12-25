@@ -1,15 +1,23 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <form @submit.prevent="onSubmit">
     <label for="name">Name:</label>
     <input v-model="form.name" type="text" id="name" required />
-    <br />
+
     <label for="email">Email:</label>
     <input v-model="form.email" type="email" id="email" required />
-    <br />
-    <label for="message">Message:</label>
-    <textarea v-model="form.message" id="message" required></textarea>
-    <br />
-    <button type="submit">Send</button>
+
+    <label for="password">Password:</label>
+    <input v-model="form.password" type="password" id="password" required minlength="8" />
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input v-model="form.confirmPassword" type="password" id="confirmPassword" required minlength="8" />
+
+    <label for="newsletter">
+      <input v-model="form.newsletter" type="checkbox" id="newsletter" />
+      Subscribe to newsletter
+    </label>
+
+    <button type="submit" :disabled="form.password !== form.confirmPassword">Sign Up</button>
   </form>
 </template>
 
@@ -18,41 +26,22 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        email: "",
-        message: ""
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        newsletter: false,
       },
-      errors: []
     };
   },
   methods: {
-    async submitForm() {
-      // validate form
-      this.errors = [];
-      if (!this.form.name) {
-        this.errors.push("Name is required.");
-      }
-      if (!this.form.email) {
-        this.errors.push("Email is required.");
-      }
-      if (!this.form.message) {
-        this.errors.push("Message is required.");
-      }
-      if (this.errors.length) {
-        return;
-      }
-
-      // submit form
-      try {
-        const response = await axios.post("/api/submit-form", this.form);
-        console.log("Form submitted successfully:", response);
-      } catch (error) {
-        console.error("Error submitting form:", error);
-      }
-    }
-  }
+    onSubmit() {
+      // handle form submission
+    },
+  },
 };
 </script>
+
 
 <style>
 input[ type="text"]{
